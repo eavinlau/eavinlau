@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eavinlau.pro.sys.dao.UserDao">
+	
+	<select id="findAllList" resultType="com.eavinlau.pro.sys.entity.UserData">
+		<![CDATA[
+			SELECT *
+			FROM user
+		]]>
+	</select>
+	
+	<select id="getUserByName" resultType="com.eavinlau.pro.sys.entity.UserData">
+		<![CDATA[
+			SELECT *
+			FROM user 
+			WHERE username=#{0}
+		]]>
+	</select>
+	
+	<select id="getUserByNamePD" resultType="com.eavinlau.pro.sys.entity.UserData">
+		<![CDATA[
+			SELECT *
+			FROM user 
+			WHERE username=#{0} AND password=#{1}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="com.eavinlau.pro.sys.entity.UserData">
+        <![CDATA[
+	        INSERT INTO user (
+	            username,
+	            password,
+	            googleCode,
+	            ctime,
+	            mtime
+	        ) VALUES (
+	            #{username},
+	            #{password},
+	            #{googleCode},
+	            CURRENT_TIMESTAMP,
+	            CURRENT_TIMESTAMP
+	        )
+        ]]>
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+        <![CDATA[
+	        DELETE FROM user 
+	        WHERE 
+	        	id = #{0}
+        ]]>
+	</delete>
+	
+</mapper>

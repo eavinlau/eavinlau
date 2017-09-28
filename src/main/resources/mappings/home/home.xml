@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eavinlau.pro.home.dao.HomeDao">
+	<select id="findAllList" resultType="com.eavinlau.pro.home.entity.HomeData">
+		<![CDATA[
+			SELECT *
+			FROM home
+		]]>
+	</select>
+	
+	<select id="getTypeList" resultType="String">
+		<![CDATA[
+			SELECT DISTINCT type
+			FROM home
+		]]>
+	</select>
+	
+	<select id="get" resultType="com.eavinlau.pro.home.entity.HomeData">
+		<![CDATA[
+			SELECT *
+			FROM home WHERE id=#{0}
+		]]>
+	</select>
+	
+	<select id="findSearchList" resultType="com.eavinlau.pro.home.entity.HomeData">
+		<![CDATA[
+			SELECT *
+			FROM home WHERE title LIKE CONCAT('%', #{0}, '%')
+		]]>
+	</select>
+	
+	<select id="findList" resultType="com.eavinlau.pro.home.entity.HomeData">
+		<![CDATA[
+			SELECT *
+			FROM home WHERE type = #{type}
+		]]>
+	</select>
+
+	<update id="update" parameterType="com.eavinlau.pro.home.entity.HomeData">
+        <![CDATA[
+	        UPDATE
+	            home
+	        SET
+	            view = #{view},
+	            mtime = CURRENT_TIMESTAMP
+	        WHERE 
+	        	id = #{id}    
+        ]]>
+	</update>
+	
+	<insert id="insert" parameterType="com.eavinlau.pro.home.entity.HomeData">
+        <![CDATA[
+	        INSERT INTO home (
+	            type,
+	            name,
+	            title,
+	            view,
+	            ctime,
+	            mtime
+	        ) VALUES (
+	            #{type},
+	            #{name},
+	            #{title},
+	            #{view},
+	            CURRENT_TIMESTAMP,
+	            CURRENT_TIMESTAMP
+	        )
+        ]]>
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+        <![CDATA[
+	        DELETE FROM home 
+	        WHERE 
+	        	id = #{0}
+        ]]>
+	</delete>
+	
+	<select id="getListByTitle" resultType="com.eavinlau.pro.home.entity.HomeData">
+		<![CDATA[
+			SELECT *
+			FROM home WHERE title = #{0}
+		]]>
+	</select>
+</mapper>
