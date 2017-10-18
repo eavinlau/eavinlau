@@ -1,5 +1,6 @@
 package com.eavinlau.pro.sys.web;
 
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base32;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -171,7 +173,16 @@ public class UserController {
 	//检查用户名是否重复
 	@RequestMapping("/checkUsername")
 	public void checkUsername(Model model,HttpServletRequest request,HttpServletResponse response){
-		String username = request.getParameter("username");
+		InputStream is = null;
+		String pramStr = null;
+		try {
+			is = request.getInputStream();
+			pramStr = IOUtils.toString(is, "utf-8");
+			logger.info(pramStr);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		String username = JSONObject.parseObject(pramStr).getString("username");
 		List<UserData> list = userService.getUserByName(username);
 		String res="ok";
 		if(list!=null&&list.size()>0){

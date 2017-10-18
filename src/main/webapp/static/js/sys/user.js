@@ -48,7 +48,15 @@ function checkUsername1(){
 	var params = {
 	   'username':str
 	};
-	$.post(url, params, checkResult, 'json');
+	$.ajax({
+        "type":"post",
+        "data":JSON.stringify(params),
+        "contentType": "application/json; charset=utf-8",
+        "url" : url,
+        "success":checkResult
+    });
+
+	//$.post(url, params, checkResult, 'json');
 }
 
 function checkResult(json){
