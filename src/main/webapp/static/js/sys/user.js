@@ -53,6 +53,7 @@ function checkUsername1(){
         "data":JSON.stringify(params),
         "contentType": "application/json; charset=utf-8",
         "url" : url,
+        "dataType":"json",
         "success":checkResult
     });
 

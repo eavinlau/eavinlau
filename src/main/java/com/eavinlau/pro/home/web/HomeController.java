@@ -13,7 +13,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -54,9 +56,8 @@ public class HomeController {
 	}
 	
 	//视频观看列表页
-	@RequestMapping("/typelist")
-	public String typelist(Model model,HttpServletRequest request){
-		String id = request.getParameter("id");
+	@RequestMapping(value = "/typelist/{id}", method = RequestMethod.GET)  
+	public String typelist(Model model,HttpServletRequest request,@PathVariable("id") String id){
 		HomeData h = homeService.get(id);
 		logger.info("watch---"+h.getType()+"---"+h.getName());
 		h.setView(h.getView()+1);
@@ -113,8 +114,8 @@ public class HomeController {
 	                }
 	    			String fileName = myfile.getOriginalFilename();
 	                //这里不必处理IO流关闭的问题，因为FileUtils.copyInputStreamToFile()方法内部会自动把用到的IO流关掉，我是看它的源码才知道的  
-	    			myfile.transferTo(new File(realPath, fileName));
 //	    			FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(realPath, fileName));  
+	    			myfile.transferTo(new File(realPath, fileName));
 	                h.setName(fileName);
 	                logger.warn("upload---"+realPath+File.separator+fileName);  
 	            }  

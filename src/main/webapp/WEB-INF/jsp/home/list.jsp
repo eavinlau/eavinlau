@@ -15,7 +15,7 @@
 			<div class="player-list-right">
 				<ul id="playerlist">
 					<c:forEach items="${homeList}" var="h" varStatus="s">
-						<a href="${ctx}/home/typelist?id=${h.id}"> 
+						<a href="${ctx}/home/typelist/${h.id}"> 
 							<c:if test="${homeData.id==h.id}">
 								<li class="current">
 									<span class="title">${h.title}</span><span class="times">${h.view}</span>

@@ -15,7 +15,7 @@
 						<c:forEach items="${homeList}" var="h" varStatus="s">
 							<li>
 								<div class="pic">
-									<a href="${ctx}/home/typelist?id=${h.id}" target="_blank">
+									<a href="${ctx}/home/typelist/${h.id}" target="_blank">
 										<img src="${ctx}/static/images/ljxd.jpg"
 										style="display: block" />
 									</a>

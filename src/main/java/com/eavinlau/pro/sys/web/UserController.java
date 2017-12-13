@@ -257,7 +257,7 @@ public class UserController {
 	        return false;
 	   }
 	    
-	   private static int verify_code(byte[] key, long t) throws NoSuchAlgorithmException, InvalidKeyException {
+	   private static int verify_code(byte[] key, long t) throws Exception {
 	        byte[] data = new byte[8];
 	        long value = t;
 	        for (int i = 8; i-- > 0; value >>>= 8) {
