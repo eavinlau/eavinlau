@@ -16,46 +16,18 @@
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx-4.3.xsd ">
 						
-	<!-- 注解方式，搜索model，搜索service，搜索dao -->
-	<context:component-scan base-package="com.eavinlau"/>
-	
+	<!-- 注解方式，搜索model，搜索service，搜索dao 
 	<context:property-placeholder location="classpath:jdbc.properties"/>	
-	
-    <context:annotation-config />  
-    
-    <!-- 配置ehcahe缓存管理器    
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
-        <property name="configLocation" value="classpath:ehcache.xml" />  
-    </bean>  
-    -->
-    <!-- 配置缓存工厂bean对象    
-    <bean id="methodCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">  
-        <property name="cacheManager" ref="cacheManager" />  
-        <property name="cacheName" value="mobileCache" />  
-    </bean>  
-    -->
-    <!-- 配置一个缓存拦截器对象，处理具体的缓存业务   
-    <bean id="methodCacheInterceptor" class="com.eavinlau.framework.intercept.MethodCacheInterceptor">  
-        <property name="cache" ref="methodCache" />  
-    </bean> 
-    -->
-    <!-- 配置缓存拦截器目录 
-    <aop:config>  
-        <aop:aspect ref="methodCacheInterceptor">  
-            <aop:pointcut id="methodpointcut" expression="execution(* com.eavinlau.project.service.*.get*(..))"/>  
-            <aop:around method="doAround"  pointcut-ref="methodpointcut"/>  
-        </aop:aspect>  
-    </aop:config>    
-    -->   
+	-->
     
 	<!-- 数据源 com.alibaba.druid.pool.DruidDataSource -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
 		<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
-	    <property name="driverClassName" value="${jdbc.driver}" />
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<!-- 基本属性 url、user、password -->
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
+		<property name="url" value="jdbc:mysql://localhost:3306/eavinlau" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
 		<property name="validationQuery" value="SELECT 1" />
 		<!-- 初始化连接大小 -->
 		<property name="initialSize" value="1" />
@@ -73,17 +45,12 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:/mappings/*/*.xml"/>
-		<!-- 
-        <property name="typeAliasesPackage" value="com.eavinlau"/>
-		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
-         -->
     </bean>
-	
-	<!--  
-	-->
-         
+    
+	<!-- mapper扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.eavinlau" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 	
 	<!-- 在service层上实现事务管理，实现平台无关 -->

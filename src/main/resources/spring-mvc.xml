@@ -11,12 +11,11 @@
           				http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven/>
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.eavinlau"/>
 	<!--
 	<mvc:resources mapping="/static/**" location="/static/" />
 	-->
-	
-	<!-- 自动扫描controller -->
-	<context:component-scan base-package="com.eavinlau"/>
 	
 	<!-- 内部资源视图解析器  前缀+逻辑名+后缀 /WEB-INF/jsps/index.jsp -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -39,6 +38,5 @@
          </property>     
      </bean>
       -->     
-     <!-- 全局异常配置 end --> 
      
 </beans>						

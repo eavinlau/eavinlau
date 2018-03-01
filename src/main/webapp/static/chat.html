@@ -1,6 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<!--<jsp:forward page="/home/main" />-->
-
+<!DOCTYPE HTML>
 <html>
   <head>
     <title>chat</title>
@@ -9,11 +7,9 @@
    
   <body>
   	<span>
-	  	发送内容：
+	  	过滤内容：
 	    <input id="text" type="text" />
 	    <input type="button" onclick="send()" value="发送"/>
-	    &nbsp;&nbsp;&nbsp;&nbsp;
-	    <input type="button" onclick="close()" value="关闭"/>
 	</span>
     <br />
     <div id="message"></div>
@@ -63,16 +59,25 @@
       function close(){
           websocket.close();
       }
+      
+      //重新打开
+      function reopen(){
+    	  location.reload(); 
+      }
        
       //发送消息
       function send(){
+    	  document.getElementById('message').innerHTML="";
           var message = document.getElementById('text').value;
           if(message==null||message==''){
         	  alert('内容不能为空');
         	  return;
           }
           websocket.send(message);
-          document.getElementById('text').value='';
+      }
+      
+      function closesend(){
+          websocket.send("close");
       }
   </script>
 </html>

@@ -8,7 +8,17 @@
 <script type="text/javascript" src="${ctx}/static/js/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 	function doSearch(){
-		$("#search_form").submit();
+		var searchurl=$("#searchurl").val();
+		var xm=$("#ctx").val();
+		var url = "${ctx}/download/search";
+		var params = {
+		   'searchurl':searchurl
+		};
+		$.post(url, params, checkResult, 'json');
+	}
+	
+	function checkResult(){
+		
 	}
 </script>
 <base target="_blank" />
@@ -23,13 +33,10 @@
 			</h1>
 			<div class="head-right">
 				<div class="search-head">
-					<form action="${ctx}/download/search" method="post" id="search_form">
-						<input id="search" type="text" name="url" placeholder="eavinlau..." autocomplete="off"> 
-						<input id="ctx" type="hidden" value="${ctx}" />
-						<a href="javascript:void(0)" target="_blank" onclick="doSearch()">
-							<img src="${ctx}/static/images/search.png">
-						</a>
-					</form>
+					<input id="searchurl" type="text" name="url" placeholder="eavinlau..." autocomplete="off"> 
+					<a href="javascript:void(0)" onclick="doSearch()">
+						<img src="${ctx}/static/images/search.png">
+					</a>
 				</div>
 			</div>
 		</div>
