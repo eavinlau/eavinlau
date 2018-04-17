@@ -2,7 +2,6 @@ package com.eavinlau.pro.sys.web;
 
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.HashMap;
