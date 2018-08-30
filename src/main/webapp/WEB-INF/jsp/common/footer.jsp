@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!--footer-->
-<hr style="margin-top: 20px;border: solid 1px #cccccc;" />
+<hr style="margin-top: 20px;border: solid 1px #f25a00;" />
 <div class="container">
 	<div class="footer">
 		<div class="foot-link">
@@ -8,7 +8,7 @@
 				<a href="${ctx}/user/main">E</a><span>-</span>
 				<a href="${ctx}/home/goAdd">A</a><span>-</span>
 				<a href="${ctx}/home/goDel">V</a><span>-</span>
-				<a href="${ctx}/user/main">I</a><span>-</span>
+				<a href="${ctx}/druid" target="_blank">I</a><span>-</span>
 				<a href="${ctx}/druid" target="_blank">N</a><span>-</span>
 				<a href="${ctx}/user/goDel">L</a><span>-</span>
 				<a href="${ctx}/user/goRegister">A</a><span>-</span>

@@ -24,7 +24,7 @@
 							<td><input type="password" id="password2" /></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="button" value="注册" onclick="register1()" /></td>
+							<td colspan="2"><input type="button" value="添加用户" onclick="register1()" /></td>
 						</tr>
 					</table>
 				</form>

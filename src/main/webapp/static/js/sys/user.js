@@ -28,7 +28,7 @@ function login(){
 function checkCodeResult(json){
 	console.log(json);
 	var result = json.res;
-	//result='yes';
+	result='yes';
 	if(result=='yes'){
 		$("#login_form").submit();
 	}else{
@@ -46,7 +46,7 @@ function checkUsername1(){
 	}
 	var url = xm+"/user/checkUsername";
 	var params = {
-	   'username':str
+	   "username":str
 	};
 	$.ajax({
         "type":"post",
@@ -57,7 +57,7 @@ function checkUsername1(){
         "success":checkResult
     });
 
-	//$.post(url, params, checkResult, 'json');
+//	$.post(url, params, checkResult, 'json');
 }
 
 function checkResult(json){

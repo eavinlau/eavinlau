@@ -9,9 +9,8 @@
 		<!-- 首页视频列表 -->
 		<div class="index-video">
 			<div class="list-video j_tabPanne">
-				<form action="${ctx}/home/save" method="post" id="save_form"
-					enctype="multipart/form-data">
-					<table width="100%" align="center" border="1px">
+				<form action="${ctx}/home/save" method="post" id="save_form" enctype="multipart/form-data">
+					<table width="100%" align="center" border="1px" >
 						<tr>
 							<td>分类：</td>
 							<td>
@@ -29,7 +28,7 @@
 							<td><input type="file" name="mp4File" /></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="button" value="保存" onclick="saveForm()" /></td>
+							<td colspan="2"><input type="button" value="添加视频" onclick="saveForm()" /></td>
 						</tr>
 					</table>
 				</form>
