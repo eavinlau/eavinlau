@@ -94,7 +94,7 @@ public class UserController {
 			request.getSession().setAttribute("username", username);
 			return "home/main";
 		}else{
-			model.addAttribute("msg", "密码不正确");
+			model.addAttribute("msg", "用户名或密码错误");
 			return "sys/login";
 		}
 	}
@@ -112,17 +112,16 @@ public class UserController {
 		if(list!=null&&list.size()==1){
 			long t = System.currentTimeMillis();
 	        boolean r = check_code(list.get(0).getGoogleCode(), Long.parseLong(googleCode), t);
-	        r=true;
 	        if(r){
 	        	res="yes";
 				msg="";
 	        }else{
 	        	res="no";
-				msg="验证码错误";
+				msg="谷歌验证码错误";
 	        }
 		}else{
 			res="no";
-			msg="用户名不存在";
+			msg="用户不存在";
 		}
 		
 		Map<String, Object> map=new HashMap<String, Object>();
@@ -229,12 +228,8 @@ public class UserController {
 	@RequestMapping("/exit")
 	public String exit(Model model,HttpServletRequest request,HttpServletResponse response){
 		logger.info("exit！！！");
-		List<HomeData> list = homeService.findAllList();
-		
-		model.addAttribute("homeList", list);
-		model.addAttribute("eavinlau", "eavinlau");
-		request.getSession().setAttribute("username", null);
-		return "home/main";
+		request.getSession().removeAttribute("username");
+		return "sys/login";
 	}
 	
 	public boolean check_code(String secret, long code, long timeMsec) {

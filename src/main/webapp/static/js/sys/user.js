@@ -28,7 +28,7 @@ function login(){
 function checkCodeResult(json){
 	console.log(json);
 	var result = json.res;
-	result='yes';
+	//result='yes';
 	if(result=='yes'){
 		$("#login_form").submit();
 	}else{

@@ -32,7 +32,6 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- 
 	<filter>
 		<filter-name>LoginFilter</filter-name>
 		<filter-class>com.eavinlau.fw.filter.LoginFilter</filter-class>
@@ -41,6 +40,7 @@
 		<filter-name>LoginFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<!-- 
 	 -->
 
 	<!-- alibaba.druid监控 -->
