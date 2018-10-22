@@ -5,13 +5,14 @@
 		<![CDATA[
 			SELECT *
 			FROM home
+			ORDER BY ctime
 		]]>
 	</select>
 	
 	<select id="getTypeList" resultType="String">
 		<![CDATA[
 			SELECT DISTINCT type
-			FROM home
+			FROM home 
 		]]>
 	</select>
 	
