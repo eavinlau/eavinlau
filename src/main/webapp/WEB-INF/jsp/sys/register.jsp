@@ -16,6 +16,13 @@
 							<td><input type="text" name="username" id="username" onblur="checkUsername1()" /></td>
 						</tr>
 						<tr>
+							<td>用户类型：</td>
+							<td>
+								<label><input type="radio" name="type" value="1" />管理员</label>
+								<label><input type="radio" name="type" value="2" checked="checked" />普通用户</label> 
+							</td>
+						</tr>
+						<tr>
 							<td>密码：</td>
 							<td><input type="password" name="password" id="password" /></td>
 						</tr>

@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="footer">
 		<div class="foot-link">
-		    <c:if test="${username=='eavinlau'}">
+		    <c:if test="${user.type=='1'}">
 				<a href="${ctx}/user/main">E</a><span>-</span>
 				<a href="${ctx}/home/goAdd">A</a><span>-</span>
 				<a href="${ctx}/home/goDel">V</a><span>-</span>
@@ -14,7 +14,7 @@
 				<a href="${ctx}/user/goRegister">A</a><span>-</span>
 				<a href="${ctx}/user/exit">U</a>
 			</c:if>
-			<c:if test="${username!='eavinlau'}">
+			<c:if test="${user.type!='1'}">
 				<a href="${ctx}/user/main">E</a><span>-</span>
 				<a>A</a><span>-</span>
 				<a>V</a><span>-</span>

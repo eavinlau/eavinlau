@@ -25,7 +25,7 @@
 		<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
 	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<!-- 基本属性 url、user、password -->
-		<property name="url" value="jdbc:mysql://localhost:3306/eavinlau" />
+		<property name="url" value="jdbc:mysql://localhost:3306/eavinlau?characterEncoding=utf-8" />
 		<property name="username" value="root" />
 		<property name="password" value="123456" />
 		<property name="validationQuery" value="SELECT 1" />

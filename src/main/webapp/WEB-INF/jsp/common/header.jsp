@@ -5,8 +5,8 @@
 <title>EavinLau</title>
 <link rel="stylesheet" type="text/css" href="${ctx}/static/css/eavinlau.css">
 <script type="text/javascript" src="${ctx}/static/js/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="${ctx}/static/js/home/home.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/sys/user.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/home/home.js"></script>
 </head>
 <body>
 	<header>

@@ -31,12 +31,14 @@
 	        INSERT INTO user (
 	            username,
 	            password,
+	            type,
 	            googleCode,
 	            ctime,
 	            mtime
 	        ) VALUES (
 	            #{username},
 	            #{password},
+	            #{type},
 	            #{googleCode},
 	            CURRENT_TIMESTAMP,
 	            CURRENT_TIMESTAMP

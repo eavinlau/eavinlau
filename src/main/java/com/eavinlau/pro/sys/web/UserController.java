@@ -78,7 +78,7 @@ public class UserController {
 			model.addAttribute("eavinlau", "eavinlau");
 			model.addAttribute("msg", "");
 			logger.info("欢迎---------"+username);
-			request.getSession().setAttribute("username", username);
+			request.getSession().setAttribute("user", list.get(0));
 			return "home/main";
 		}else{
 			model.addAttribute("msg", "用户名或密码错误");
@@ -141,10 +141,12 @@ public class UserController {
 	public String register(Model model,HttpServletRequest request){
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
+		String type=request.getParameter("type");
 		String googleCode=GoogleUtil.generateSecretKey();
 		UserData u = new UserData();
 		u.setUsername(username);
 		u.setPassword(MD5.GetMD5Code(password));
+		u.setType(type);
 		u.setGoogleCode(googleCode);
 		userService.register(u);
 		
@@ -215,7 +217,7 @@ public class UserController {
 	@RequestMapping("/exit")
 	public String exit(Model model,HttpServletRequest request,HttpServletResponse response){
 		logger.info("exit！！！");
-		request.getSession().removeAttribute("username");
+		request.getSession().removeAttribute("user");
 		return "sys/login";
 	}
 	
