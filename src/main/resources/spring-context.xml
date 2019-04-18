@@ -16,10 +16,6 @@
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx-4.3.xsd ">
 						
-	<!-- 注解方式，搜索model，搜索service，搜索dao 
-	<context:property-placeholder location="classpath:jdbc.properties"/>	
-	-->
-    
 	<!-- 数据源 com.alibaba.druid.pool.DruidDataSource -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
 		<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
