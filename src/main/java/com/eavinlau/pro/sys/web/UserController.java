@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.eavinlau.fw.util.GoogleUtil;
@@ -39,18 +40,12 @@ public class UserController {
     
     public static Map<String, Long> timeK = new HashMap<String, Long>();
     
-    //登录
+    //用户个人页面
   	@RequestMapping("/main")
   	public String main(Model model,HttpServletRequest request){
-  		String username = (String)request.getSession().getAttribute("username");
-  		List<UserData> list = userService.getUserByName(username);
-  		if(list!=null&&list.size()==1){
-  			model.addAttribute("user", list.get(0));
-  		}else{
-  			model.addAttribute("user", new UserData());
-  		}
   		return "sys/main";
   	}
+  	
     //跳转到登录页面
     @RequestMapping("/goLogin")
 	public String goLogin(Model model,HttpServletRequest request){
@@ -158,8 +153,9 @@ public class UserController {
 	}
 		
 	//检查用户名是否重复
+	@ResponseBody
 	@RequestMapping("/checkUsername")
-	public void checkUsername(Model model,HttpServletRequest request,HttpServletResponse response){
+	public Object checkUsername(Model model,HttpServletRequest request,HttpServletResponse response){
 		InputStream is = null;
 		String pramStr = null;
 		try {
@@ -177,20 +173,7 @@ public class UserController {
 		}
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("res", res);
-		JSONObject obj = new JSONObject(map);
-		response.setCharacterEncoding("UTF8");
-		PrintWriter printWriter = null;
-		try {
-			printWriter = response.getWriter();
-			printWriter.print(obj.toString());
-		} catch(Exception e) {
-			logger.error(e.getMessage());
-		}finally {
-			if (null != printWriter) {
-				printWriter.flush();
-				printWriter.close();
-			}
-		}
+		return map;
 	}
 		
 	//跳转到删除用户页面
@@ -198,7 +181,6 @@ public class UserController {
 	public String goDelList(Model model,HttpServletRequest request){
 		List<UserData> list = userService.findAllList();
 		model.addAttribute("userList", list);
-		
 		return "sys/del";
 	}
 	
@@ -209,7 +191,6 @@ public class UserController {
 		userService.delete(id);
 		List<UserData> list = userService.findAllList();
 		model.addAttribute("userList", list);
-		
 		return "sys/del";
 	}
 		
