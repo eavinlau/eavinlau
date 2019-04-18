@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-
 @ControllerAdvice  
 public class ExceptionController {  
 	private static Logger logger = Logger.getLogger(ExceptionController.class); 

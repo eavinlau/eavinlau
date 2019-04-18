@@ -88,7 +88,6 @@ public class HomeController {
 	// 跳转到添加视频
 	@RequestMapping("goAdd")
 	public String goAdd(Model model, HttpServletRequest request) {
-
 		return "home/add";
 	}
 
@@ -124,7 +123,6 @@ public class HomeController {
 		}
 		homeService.insert(h);
 		List<HomeData> list = homeService.findAllList();
-
 		model.addAttribute("homeList", list);
 		model.addAttribute("eavinlau", "eavinlau");
 		return "home/main";
@@ -135,7 +133,6 @@ public class HomeController {
 	public String goDelList(Model model, HttpServletRequest request) {
 		List<HomeData> list = homeService.findAllList();
 		model.addAttribute("homeList", list);
-
 		return "home/del";
 	}
 
@@ -172,17 +169,5 @@ public class HomeController {
 		map.put("res", res);
 		return map;
 	}
-
-//	@ExceptionHandler
-//    public String exp(Exception ex) {
-//		logger.error(getTrace(ex));
-//		return "error/500";
-//    }
-//    
-//    private String getTrace(Throwable t) {
-//		StringWriter stringWriter = new StringWriter();
-//		PrintWriter writer = new PrintWriter(stringWriter);
-//		t.printStackTrace(writer);
-//		return stringWriter.getBuffer().toString();
-//	}
+	
 }
