@@ -13,7 +13,7 @@
 		<div class="container">
 			<h1>
 				<a href="${ctx}"> 
-					<span style="color: #6666ff">EavinLau</span>
+					<span style="color: #2886db">EavinLau</span>
 				</a>
 			</h1>
 			<div class="head-right">
