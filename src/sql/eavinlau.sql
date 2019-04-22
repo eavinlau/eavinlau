@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `eavinlau` DEFAULT CHARACTER SET utf8;
 
+USE `eavinlau`;
+
 CREATE TABLE `home` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
   `type` varchar(8) NOT NULL,
