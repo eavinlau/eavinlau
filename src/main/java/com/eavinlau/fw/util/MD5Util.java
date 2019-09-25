@@ -3,7 +3,7 @@ package com.eavinlau.fw.util;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
-public class MD5 {
+public class MD5Util {
 
 	public static String GetMD5Code(String str) {
 		String md5code = null;
@@ -22,7 +22,7 @@ public class MD5 {
 	}
 
 	public static void main(String[] args) {
-		String s = MD5.GetMD5Code("eavinlau");
+		String s = GetMD5Code("eavinlau");
 		System.out.println(s);
 	}
 }

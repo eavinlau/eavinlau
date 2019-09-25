@@ -1,9 +1,9 @@
-package com.eavinlau.pro.home.dao;
+package com.eavinlau.pro.dao;
 
 import java.util.List;
 
 import com.eavinlau.fw.dao.BaseDao;
-import com.eavinlau.pro.home.entity.HomeData;
+import com.eavinlau.pro.entity.HomeData;
 
 public interface HomeDao extends BaseDao<HomeData> {
 	

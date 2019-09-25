@@ -1,4 +1,4 @@
-package com.eavinlau.pro.home.web;
+package com.eavinlau.pro.web;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.eavinlau.pro.home.entity.HomeData;
-import com.eavinlau.pro.home.service.HomeService;
+import com.eavinlau.pro.entity.HomeData;
+import com.eavinlau.pro.service.HomeService;
 
 @Controller
 @RequestMapping("/home")

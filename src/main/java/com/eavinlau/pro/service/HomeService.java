@@ -1,4 +1,4 @@
-package com.eavinlau.pro.home.service;
+package com.eavinlau.pro.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.eavinlau.pro.home.dao.HomeDao;
-import com.eavinlau.pro.home.entity.HomeData;
+import com.eavinlau.pro.dao.HomeDao;
+import com.eavinlau.pro.entity.HomeData;
 
 @Service("homeService")
 @Transactional

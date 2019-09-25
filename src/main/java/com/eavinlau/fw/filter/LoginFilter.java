@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.eavinlau.pro.sys.entity.UserData;
+import com.eavinlau.pro.entity.UserData;
 
 public class LoginFilter implements Filter {
 

@@ -1,4 +1,4 @@
-package com.eavinlau.pro.home.entity;
+package com.eavinlau.pro.entity;
 
 import java.io.Serializable;
 

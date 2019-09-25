@@ -1,4 +1,4 @@
-package com.eavinlau.pro.sys.web;
+package com.eavinlau.pro.web;
 
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.eavinlau.fw.util.GoogleUtil;
-import com.eavinlau.fw.util.MD5;
-import com.eavinlau.pro.home.entity.HomeData;
-import com.eavinlau.pro.home.service.HomeService;
-import com.eavinlau.pro.sys.entity.UserData;
-import com.eavinlau.pro.sys.service.UserService;
+import com.eavinlau.fw.util.MD5Util;
+import com.eavinlau.pro.entity.HomeData;
+import com.eavinlau.pro.entity.UserData;
+import com.eavinlau.pro.service.HomeService;
+import com.eavinlau.pro.service.UserService;
 
 @Controller
 @RequestMapping("/user")
@@ -58,7 +58,7 @@ public class UserController {
 	public String login(Model model,HttpServletRequest request){
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		List<UserData> list = userService.getUserByNamePD(username, MD5.GetMD5Code(password));
+		List<UserData> list = userService.getUserByNamePD(username, MD5Util.GetMD5Code(password));
 		if(list!=null&&list.size()==1){
 //			if(su.contains(username+";")){
 //				model.addAttribute("msg", "该账户已在其他终端登录");
@@ -140,7 +140,7 @@ public class UserController {
 		String googleCode=GoogleUtil.generateSecretKey();
 		UserData u = new UserData();
 		u.setUsername(username);
-		u.setPassword(MD5.GetMD5Code(password));
+		u.setPassword(MD5Util.GetMD5Code(password));
 		u.setType(type);
 		u.setGoogleCode(googleCode);
 		userService.register(u);

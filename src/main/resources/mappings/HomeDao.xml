@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.eavinlau.pro.home.dao.HomeDao">
-	<select id="findAllList" resultType="com.eavinlau.pro.home.entity.HomeData">
+<mapper namespace="com.eavinlau.pro.dao.HomeDao">
+	<select id="findAllList" resultType="com.eavinlau.pro.entity.HomeData">
 		<![CDATA[
 			SELECT *
 			FROM home
@@ -16,28 +16,28 @@
 		]]>
 	</select>
 	
-	<select id="get" resultType="com.eavinlau.pro.home.entity.HomeData">
+	<select id="get" resultType="com.eavinlau.pro.entity.HomeData">
 		<![CDATA[
 			SELECT *
 			FROM home WHERE id=#{0}
 		]]>
 	</select>
 	
-	<select id="findSearchList" resultType="com.eavinlau.pro.home.entity.HomeData">
+	<select id="findSearchList" resultType="com.eavinlau.pro.entity.HomeData">
 		<![CDATA[
 			SELECT *
 			FROM home WHERE title LIKE CONCAT('%', #{0}, '%')
 		]]>
 	</select>
 	
-	<select id="findList" resultType="com.eavinlau.pro.home.entity.HomeData">
+	<select id="findList" resultType="com.eavinlau.pro.entity.HomeData">
 		<![CDATA[
 			SELECT *
 			FROM home WHERE type = #{type}
 		]]>
 	</select>
 
-	<update id="update" parameterType="com.eavinlau.pro.home.entity.HomeData">
+	<update id="update" parameterType="com.eavinlau.pro.entity.HomeData">
         <![CDATA[
 	        UPDATE
 	            home
@@ -49,7 +49,7 @@
         ]]>
 	</update>
 	
-	<insert id="insert" parameterType="com.eavinlau.pro.home.entity.HomeData">
+	<insert id="insert" parameterType="com.eavinlau.pro.entity.HomeData">
         <![CDATA[
 	        INSERT INTO home (
 	            type,
@@ -77,7 +77,7 @@
         ]]>
 	</delete>
 	
-	<select id="getListByTitle" resultType="com.eavinlau.pro.home.entity.HomeData">
+	<select id="getListByTitle" resultType="com.eavinlau.pro.entity.HomeData">
 		<![CDATA[
 			SELECT *
 			FROM home WHERE title = #{0}

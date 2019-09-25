@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.eavinlau.pro.sys.dao.UserDao">
+<mapper namespace="com.eavinlau.pro.dao.UserDao">
 	
-	<select id="findAllList" resultType="com.eavinlau.pro.sys.entity.UserData">
+	<select id="findAllList" resultType="com.eavinlau.pro.entity.UserData">
 		<![CDATA[
 			SELECT *
 			FROM user
@@ -10,7 +10,7 @@
 		]]>
 	</select>
 	
-	<select id="getUserByName" resultType="com.eavinlau.pro.sys.entity.UserData">
+	<select id="getUserByName" resultType="com.eavinlau.pro.entity.UserData">
 		<![CDATA[
 			SELECT *
 			FROM user 
@@ -18,7 +18,7 @@
 		]]>
 	</select>
 	
-	<select id="getUserByNamePD" resultType="com.eavinlau.pro.sys.entity.UserData">
+	<select id="getUserByNamePD" resultType="com.eavinlau.pro.entity.UserData">
 		<![CDATA[
 			SELECT *
 			FROM user 
@@ -26,7 +26,7 @@
 		]]>
 	</select>
 	
-	<insert id="insert" parameterType="com.eavinlau.pro.sys.entity.UserData">
+	<insert id="insert" parameterType="com.eavinlau.pro.entity.UserData">
         <![CDATA[
 	        INSERT INTO user (
 	            username,
