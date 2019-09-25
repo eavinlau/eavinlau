@@ -100,9 +100,9 @@ public class HomeController {
 					logger.warn("文件未选择");
 				} else {
 					logger.info("========================================");
-					logger.info("文件长度: " + myfile.getSize());
+					logger.info("文件大小: " + myfile.getSize()/1024/1024+"M");
 					logger.info("文件类型: " + myfile.getContentType());
-					logger.info("文件原名: " + myfile.getOriginalFilename());
+					logger.info("文件名称: " + myfile.getOriginalFilename());
 					logger.info("========================================");
 					// 如果用的是Tomcat服务器，则文件会上传到\\%TOMCAT_HOME%\\webapps\\YourWebProject\\WEB-INF\\upload\\文件夹中
 					String realPath = request.getSession().getServletContext().getRealPath("/static/mp4/" + h.getType());
