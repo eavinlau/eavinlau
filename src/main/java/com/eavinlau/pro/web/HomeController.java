@@ -97,17 +97,15 @@ public class HomeController {
 		if (mp4File.length > 0) {
 			for (MultipartFile myfile : mp4File) {
 				if (myfile.isEmpty()) {
-					logger.info("文件未上传");
+					logger.warn("文件未选择");
 				} else {
 					logger.info("========================================");
 					logger.info("文件长度: " + myfile.getSize());
 					logger.info("文件类型: " + myfile.getContentType());
-					logger.info("文件名称: " + myfile.getName());
 					logger.info("文件原名: " + myfile.getOriginalFilename());
 					logger.info("========================================");
 					// 如果用的是Tomcat服务器，则文件会上传到\\%TOMCAT_HOME%\\webapps\\YourWebProject\\WEB-INF\\upload\\文件夹中
-					String realPath = request.getSession().getServletContext()
-							.getRealPath("/static/mp4/" + h.getType());
+					String realPath = request.getSession().getServletContext().getRealPath("/static/mp4/" + h.getType());
 					File f = new File(realPath);
 					if (!f.exists()) {
 						f.mkdirs();
@@ -117,7 +115,7 @@ public class HomeController {
 //	    			FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(realPath, fileName));  
 					myfile.transferTo(new File(realPath, fileName));
 					h.setName(fileName);
-					logger.warn("upload---" + realPath + File.separator + fileName);
+					logger.info("upload---" + realPath + File.separator + fileName);
 				}
 			}
 		}
