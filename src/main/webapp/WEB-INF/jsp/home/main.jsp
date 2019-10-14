@@ -25,7 +25,7 @@
 										<h3>${h.title}</h3>
 									</div>
 									<div class="fun">
-										<span> ${h.view}&nbsp;${h.ctime} </span>
+										<span> ${h.type}&nbsp;${h.view}&nbsp;${h.ctime} </span>
 									</div>
 								</div>
 							</li>
