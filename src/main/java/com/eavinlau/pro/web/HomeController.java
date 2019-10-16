@@ -1,7 +1,6 @@
 package com.eavinlau.pro.web;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,12 +70,8 @@ public class HomeController {
 
 	// 搜索视频
 	@RequestMapping("/search")
-	public String search(Model model, HttpServletRequest request) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+	public String search(Model model, HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		String searchStr = request.getParameter("searchStr");
 		List<HomeData> list = homeService.findSearchList(searchStr);
 

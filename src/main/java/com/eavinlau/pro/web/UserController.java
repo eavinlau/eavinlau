@@ -1,7 +1,6 @@
 package com.eavinlau.pro.web;
 
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,13 +59,6 @@ public class UserController {
 		String password=request.getParameter("password");
 		List<UserData> list = userService.getUserByNamePD(username, MD5Util.GetMD5Code(password));
 		if(list!=null&&list.size()==1){
-//			if(su.contains(username+";")){
-//				model.addAttribute("msg", "该账户已在其他终端登录");
-//				return "sys/login";
-//			}else{
-//				su=su+username+";";
-//			}
-//			timeK.put(username, System.currentTimeMillis());
 			List<HomeData> l = homeService.findAllList();
 			
 			model.addAttribute("homeList", l);
@@ -82,8 +74,9 @@ public class UserController {
 	}
 	
 	//检查验证码是否正确
+	@ResponseBody
 	@RequestMapping("/checkCode")
-	public void checkCode(Model model,HttpServletRequest request,HttpServletResponse response){
+	public Object checkCode(Model model,HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String username = request.getParameter("username");
 		String googleCode=request.getParameter("googleCode");
 		List<UserData> list = userService.getUserByName(username);
@@ -109,20 +102,7 @@ public class UserController {
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("res", res);
 		map.put("msg", msg);
-		JSONObject obj = new JSONObject(map);
-		response.setCharacterEncoding("UTF8");
-		PrintWriter printWriter = null;
-		try {
-			printWriter = response.getWriter();
-			printWriter.print(obj.toString());
-		} catch(Exception e) {
-			logger.error(e.getMessage());
-		}finally {
-			if (null != printWriter) {
-				printWriter.flush();
-				printWriter.close();
-			}
-		}
+		return map;
 	}
 	
 	//跳转到注册
@@ -155,16 +135,10 @@ public class UserController {
 	//检查用户名是否重复
 	@ResponseBody
 	@RequestMapping("/checkUsername")
-	public Object checkUsername(Model model,HttpServletRequest request,HttpServletResponse response){
-		InputStream is = null;
-		String pramStr = null;
-		try {
-			is = request.getInputStream();
-			pramStr = IOUtils.toString(is, "utf-8");
-			logger.info(pramStr);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+	public Object checkUsername(Model model,HttpServletRequest request,HttpServletResponse response) throws Exception{
+		InputStream is = request.getInputStream();
+		String pramStr = IOUtils.toString(is, "utf-8");
+		logger.info(pramStr);
 		String username = JSONObject.parseObject(pramStr).getString("username");
 		List<UserData> list = userService.getUserByName(username);
 		String res="ok";

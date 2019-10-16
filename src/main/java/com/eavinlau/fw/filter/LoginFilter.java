@@ -1,7 +1,6 @@
 package com.eavinlau.fw.filter;
 
 import java.io.IOException;
-import java.util.Timer;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,9 +17,6 @@ import org.apache.log4j.Logger;
 import com.eavinlau.pro.entity.UserData;
 
 public class LoginFilter implements Filter {
-
-	private Timer timer = null;
-	private long count = 1;
 
 	private static Logger logger = Logger.getLogger(LoginFilter.class);
 
