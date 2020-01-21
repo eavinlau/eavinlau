@@ -32,7 +32,7 @@
 	<nav>
 		<div class="container">
 			<ul>
-				<li><a href="${ctx}/home/main">首页</a></li>
+				<li><a href="${ctx}">首页</a></li>
 				<li><a href="javascript:void(0)">频道</a>
 					<div class="Submenu">
 						<div>

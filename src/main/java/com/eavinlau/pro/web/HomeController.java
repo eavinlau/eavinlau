@@ -100,7 +100,8 @@ public class HomeController {
 					logger.info("文件名称: " + myfile.getOriginalFilename());
 					logger.info("========================================");
 					// 如果用的是Tomcat服务器，则文件会上传到\\%TOMCAT_HOME%\\webapps\\YourWebProject\\WEB-INF\\upload\\文件夹中
-					String realPath = request.getSession().getServletContext().getRealPath("/static/mp4/" + h.getType());
+//					String realPath = request.getSession().getServletContext().getRealPath("/static/mp4/" + h.getType());
+					String realPath = "d:/static/mp4/"+h.getType();
 					File f = new File(realPath);
 					if (!f.exists()) {
 						f.mkdirs();
