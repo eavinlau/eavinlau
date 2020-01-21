@@ -2,7 +2,6 @@ package com.eavinlau.fw.util;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.SequenceInputStream;
@@ -15,43 +14,43 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-public class VedioDownload {
+public class TXVedioDownload {
 
 
 	public static void main(String[] args) {
-		String m3y8URL="https://valipl-vip.cp31.ott.cibntv.net/677359E258B397172AF1D5C59/03000900005C56EAD45EBDD38E657A053E21F4-BC63-4C5D-816B-3411BBB933E8-1-114.m3u8?ccode=0502&duration=259&expire=18000&psid=5a1f161f0a36e6dfc81046c17fda1752&ups_client_netip=de425d12&ups_ts=1561702492&ups_userid=84228117&utid=ygQJFfib9UICAd5CXRIaJv9j&vid=XNDA0NjUxNjEwMA&vkey=A97dfcb93c518e8de0264c3bb3d850a30&sm=1&operate_type=1&bc=2";
-		String vedioFileName="D:/1/一颗小葱-青花瓷";
-		String vedioSuffix=".mp4";
+		String vedioFileName="D:/eavinlau/忽而今夏/忽而今夏04.mp4";
+		String m3y8URL="https%3A%2F%2Fapd-1b409e8818cc1bd30a32cee835da00eb.v.smtcdns.com%2Fvipts.tc.qq.com%2FAv83t-KKJi0Ux85akb4KiDp0beWVdaj2_MsNDgzXv1DE%2FuwMROfz2r5xgoaQXGdGnC2df64_gcR4DH6oNabw6qBdCnk2E%2FOgGWcvobFIHs1MUS4qfQoLG2BHviVd4AUQv5G4Cz8kg9tfSY_t0gK3toRFxowaPSo33vNugZVLeKEKOkjb9F58plwgZFl7NIM3QAi3jrpr5n7IwCHvErV-rWP_veVN23bSFXNCMCD0qNO3A2U9Tq3ZYP7WoG84xDT47HYE7vw-I%2Fr00264m3wrh.321003.ts.m3u8";
+		String baseurl="https%3A%2F%2Fapd-1b409e8818cc1bd30a32cee835da00eb.v.smtcdns.com%2Fvipts.tc.qq.com%2FAv83t-KKJi0Ux85akb4KiDp0beWVdaj2_MsNDgzXv1DE%2FuwMROfz2r5xgoaQXGdGnC2df64_gcR4DH6oNabw6qBdCnk2E%2FOgGWcvobFIHs1MUS4qfQoLG2BHviVd4AUQv5G4Cz8kg9tfSY_t0gK3toRFxowaPSo33vNugZVLeKEKOkjb9F58plwgZFl7NIM3QAi3jrpr5n7IwCHvErV-rWP_veVN23bSFXNCMCD0qNO3A2U9Tq3ZYP7WoG84xDT47HYE7vw-I%2F";
 		URL url=null;
 		try {
-			url = new URL(m3y8URL);
+			url = new URL(m3y8URL.replaceAll("%2F", "/").replaceAll("%3A", ":"));
+			System.out.println(url);
+//			if(1==1) {
+//				return;
+//			}
 			InputStream is = getInputStream (url);
 			// 读取响应
 			if(is!=null) {
 				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 				String line=null;
-				byte[] buf = new byte[1024]; 
-				int i=0;
+//				byte[] buf = new byte[1024]; 
 				List<InputStream> list = new ArrayList<InputStream>();
 				Enumeration<InputStream> en =null;
+				String newurl="";
 				while ((line = reader.readLine()) != null) {
 					line = new String(line.getBytes(), "utf-8");
-					System.out.println(line);
-					if(line.startsWith("https")) {
-						i++;
+					if(!line.startsWith("#EXT")) {
 //						FileUtils.copyURLToFile(new URL(line), new File(vedioFileName+i+vedioSuffix));
-						list.add(new URL(line).openStream());
-						en = Collections.enumeration(list);
-//						InputStream tsis = getInputStream(new URL(line));
-//						FileUtils.copyInputStreamToFile(tsis, new File(vedioFileName+i+vedioSuffix));
-//						int bytesRead;  
-//						while ((bytesRead = tsis.read(buf)) != -1) {
-//							fos.write(buf);
-//						}
+						newurl=baseurl+line;
+						newurl=newurl.replaceAll("%2F", "/").replaceAll("%3A", ":");
+//						System.out.println(newurl);
+						list.add(new URL(newurl).openStream());
 					}
 				}
+				en = Collections.enumeration(list);
 				SequenceInputStream sis = new SequenceInputStream(en);
-				FileUtils.copyInputStreamToFile(sis, new File("D:/1/一颗小葱-青花瓷.mp4"));
+				FileUtils.copyToFile(sis, new File(vedioFileName));
+				System.out.println("完成");
 			}else {
 				System.err.println("m3p8没获得资源！");
 			}
